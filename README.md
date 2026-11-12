@@ -36,27 +36,40 @@ Duration format: `0.8s`, `12.3s`, `2m 05s`, `1h 02m 05s`.
 
 ## Install
 
-Load it for a single run:
+Repository: https://github.com/avatsaev/pi-turntime
+
+### pi
 
 ```
-pi  -e /path/to/pi-turntime
-omp -e /path/to/pi-turntime
+pi install https://github.com/avatsaev/pi-turntime
 ```
 
-Install persistently:
+### omp
+
+Clone, then install from the local directory:
 
 ```
-pi install /path/to/pi-turntime      # or a git/npm source
+git clone https://github.com/avatsaev/pi-turntime.git
+omp install ./pi-turntime
 ```
 
-For omp, add the directory to the `extensions:` list in `~/.omp/agent/config.yml`, or place it under
-`~/.omp/agent/extensions/`. The package root has both an `omp.extensions` and `pi.extensions`
-manifest entry and a root `index.ts`, so either host loads it as-is. No build step: both hosts
-load the `.ts` files directly.
+Or add the clone's path to the `extensions:` list in `~/.omp/agent/config.yml`, or place it under
+`~/.omp/agent/extensions/`. Restart omp or open a new session to pick it up.
+
+### Single run (either host)
+
+```
+git clone https://github.com/avatsaev/pi-turntime.git
+pi  -e ./pi-turntime
+omp -e ./pi-turntime
+```
+
+The package root has both an `omp.extensions` and `pi.extensions` manifest entry and a root
+`index.ts`, so either host loads it as-is. No build step: both hosts load the `.ts` files directly.
 
 ## Disable
 
-- pi: `pi remove /path/to/pi-turntime` (or drop `-e`).
+- pi: `pi remove https://github.com/avatsaev/pi-turntime` (or drop `-e`).
 - omp: remove it from `extensions:` / drop `-e`, or set `display.showTurnTime: false`.
 - Either host: `--no-extensions` starts without discovered extensions.
 
