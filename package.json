@@ -1,0 +1,30 @@
+{
+  "name": "pi-turntime",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Show total agent turn time on omp (native setting) and pi (stats-style row)",
+  "keywords": [
+    "pi-package"
+  ],
+  "omp": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^1.5.2",
+    "@oh-my-pi/pi-coding-agent": "^18.19.0",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}
